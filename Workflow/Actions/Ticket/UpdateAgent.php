@@ -39,6 +39,11 @@ class UpdateAgent extends WorkflowAction
             'name' => 'Response Performing Agent',
         ]);
 
+        array_unshift($agentCollection, [
+            'id' => null,
+            'name' => 'Unassigned',
+        ]);
+
         return $agentCollection;
     }
 
