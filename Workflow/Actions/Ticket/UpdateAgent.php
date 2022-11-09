@@ -40,7 +40,7 @@ class UpdateAgent extends WorkflowAction
         ]);
 
         array_unshift($agentCollection, [
-            'id' => null,
+            'id' => 'none',
             'name' => 'Unassigned',
         ]);
 
@@ -52,6 +52,9 @@ class UpdateAgent extends WorkflowAction
         $entityManager = $container->get('doctrine.orm.entity_manager');
         
         if ($entity instanceof Ticket) {
+            if ($value == 'none') {
+                $agent = null;
+            }
             if ($value == 'responsePerforming' && is_object($currentUser = $container->get('security.token_storage')->getToken()->getUser())) {
                 if (null != $currentUser->getAgentInstance()) {
                     $agent = $currentUser;
