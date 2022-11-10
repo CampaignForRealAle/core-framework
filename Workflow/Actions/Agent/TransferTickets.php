@@ -34,15 +34,9 @@ class TransferTickets extends WorkflowAction
             ];
         }, $container->get('user.service')->getAgentPartialDataCollection());
 
-
         array_unshift($agentCollection, [
             'id' => 'responsePerforming',
             'name' => 'Response Performing Agent',
-        ]);
-
-        array_unshift($agentCollection, [
-            'id' => null,
-            'name' => 'Unassigned',
         ]);
 
         return $agentCollection;
